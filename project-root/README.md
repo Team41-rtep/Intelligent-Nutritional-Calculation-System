@@ -1,36 +1,35 @@
 ## Project Overview
 
-Intelligent-Nutritional-Calculation-System is a real-time embedded system that identifies fruits using a camera and a lightweight neural network model, measures their weight using a serial-connected weight sensor, and calculates their nutritional content instantly. It provides a visual and intuitive interface to help users monitor nutritional intake in daily life.
+Intelligent-Nutritional-Calculation-System is a real-time embedded system that identifies fruits using a camera and a lightweight neural network model, measures their weight using a serial-connected weight sensor, and calculates their nutritional content instantly. It provides a visual and intuitive interface to help users monitor nutritional intake in daily life.  
 
-This project combines computer vision, serial communication, and nutrition analysis into a single user-friendly solution, running on a Raspberry Pi with real-time data acquisition and processing.
+This project combines computer vision, serial communication, and nutrition analysis into a single user-friendly solution, running on a Raspberry Pi with real-time data acquisition and processing.  
 
-## Real-Time Requirements
+## Real-Time Requirements  
 
-To ensure responsive and interactive operation, the system is designed with the following real-time features:
+To ensure responsive and interactive operation, the system is designed with the following real-time features:  
 
-Live video feed from a camera is captured and processed frame-by-frame for fruit classification using a TensorFlow Lite model.
+Live video feed from a camera is captured and processed frame-by-frame for fruit classification using a TensorFlow Lite model.  
 
-Serial communication with a weight sensor is handled via a dedicated background thread, ensuring continuous data flow without blocking the main UI.
+Serial communication with a weight sensor is handled via a dedicated background thread, ensuring continuous data flow without blocking the main UI.  
 
-Real-time feedback is provided by overlaying predictions and nutritional information onto the live video stream using OpenCV.
+Real-time feedback is provided by overlaying predictions and nutritional information onto the live video stream using OpenCV.  
 
-Non-blocking execution is achieved through multithreading and event-driven architecture, avoiding delays or unresponsiveness in user interaction.
+Non-blocking execution is achieved through multithreading and event-driven architecture, avoiding delays or unresponsiveness in user interaction.  
 
 ## System Requirements
 
-Raspberry Pi 5
+Raspberry Pi 5  
 
-USB Camera 
+USB Camera   
 
-Serial Weight Sensor (connected via /dev/ttyAMA0 or /dev/ttyUSB0)
+Serial Weight Sensor (connected via /dev/ttyAMA0 or /dev/ttyUSB0)  
 
-C++17 or newer
+C++17 or newer  
 
-Dependencies:
-TensorFlow Lite C++ API
-OpenCV
-Boost.Asio
-
+Dependencies:  
+TensorFlow Lite C++ API  
+OpenCV  
+Boost.Asio  
 ##  Install Dependencies
 
 ## Usage
