@@ -39,31 +39,31 @@ Boost.Asio
 
 ## Repository Structure
 
-project-root/
-├── src/                         # Source code               
-│   ├── weight_sensor.cc        
-│   ├── fruit_classifier         
-│   ├── fruit_classifier.runfiles_manifest
-│   ├── fruit_classifier-2.params
-│   ├── weight_sensor            
-│   ├── weight_sensor.runfiles_manifest
-│   ├── weight_sensor-2.params
-├── include/                     # Header files 
-│   ├── fruit_classifier.cc 
-├── models/                      # AI models
-│   └── fruit_model.tflite      
-├── data/                        # Dataset or CSV files
-│   └── fruits.csv               
-├── doc/                         # Design docs, architecture diagrams
-│   └──weight_sensor.jpg   
-│   └── Structure.png 
-├── media/                       # Images, screenshots, demo videos
-│   └── demo_screenshot.jpg   
-├── README.md                    # Project overview and guide
-├── LICENSE                      # Open source license
-└── .github/                     # GitHub templates
-    ├── ISSUE_TEMPLATE.md
-    └── PULL_REQUEST_TEMPLATE.md
+project-root/  
+├── src/                         # Source code                 
+│   ├── weight_sensor.cc          
+│   ├── fruit_classifier           
+│   ├── fruit_classifier.runfiles_manifest  
+│   ├── fruit_classifier-2.params  
+│   ├── weight_sensor              
+│   ├── weight_sensor.runfiles_manifest  
+│   ├── weight_sensor-2.params  
+├── include/                     # Header files   
+│   ├── fruit_classifier.cc   
+├── models/                      # AI models  
+│   └── fruit_model.tflite        
+├── data/                        # Dataset or CSV files  
+│   └── fruits.csv                 
+├── doc/                         # Design docs, architecture diagrams  
+│   └──weight_sensor.jpg     
+│   └── Structure.png   
+├── media/                       # Images, screenshots, demo videos  
+│   └── demo_screenshot.jpg     
+├── README.md                    # Project overview and guide  
+├── LICENSE                      # Open source license  
+└── .github/                     # GitHub templates  
+    ├── ISSUE_TEMPLATE.md  
+    └── PULL_REQUEST_TEMPLATE.md  
 
 ## Download
 
@@ -72,20 +72,20 @@ project-root/
 
 ## License
 
-This project is licensed under the MIT License.  
-See the [LICENSE](./LICENSE) file for more details.  
+This project is licensed under the MIT License.    
+See the [LICENSE](./LICENSE) file for more details.    
 
-## Follow & Share
-Platform	Link
-Tik-Tok(CN) 
-Instagram	https://www.instagram.com/reel/DIsNyOcIzj-/?igsh=a3Bzc2doYTR3N3p2
+## Follow & Share  
+Platform	Link  
+Tik-Tok(CN)   
+Instagram	https://www.instagram.com/reel/DIsNyOcIzj-/?igsh=a3Bzc2doYTR3N3p2  
 
 
 
-## Team Contribution
-Name | GitHub Branch | Main Responsibilities | Description
+## Team Contribution  
+Name | GitHub Branch | Main Responsibilities | Description  
 
-Ge Zhou | GeZhou-hardware | Hardware communication & weight sensor | Developed the WeightSensor class, implemented serial communication, data reading, command sending, and weight acquisition thread 
-Zhenyu Xu | ZhenyuXu-ai | AI model integration & fruit classification | Integrated TensorFlow Lite model, handled image preprocessing, inference execution, and label decoding 
-Junze Mao | JunzeMao-nutrition | Nutrition database & calculation module | Built the NutritionDatabase class from CSV file, implemented nutritional value calculation based on predicted fruit and weight 
-Ziyan Zeng | ZiyanZeng-ui-doc | UI display, documentation, and promotion | Designed OpenCV real-time UI output, managed testing and documentation, updated GitHub README, created demo video and handled social media promotion
+Ge Zhou | GeZhou-hardware | Hardware communication & weight sensor | Developed the WeightSensor class, implemented serial communication, data reading, command sending, and weight acquisition thread   
+Zhenyu Xu | ZhenyuXu-ai | AI model integration & fruit classification | Integrated TensorFlow Lite model, handled image preprocessing, inference execution, and label decoding   
+Junze Mao | JunzeMao-nutrition | Nutrition database & calculation module | Built the NutritionDatabase class from CSV file, implemented nutritional value calculation based on predicted fruit and weight   
+Ziyan Zeng | ZiyanZeng-ui-doc | UI display, documentation, and promotion | Designed OpenCV real-time UI output, managed testing and documentation, updated GitHub README, created demo video and handled social media promotion  
