@@ -76,7 +76,7 @@ See the [LICENSE](./LICENSE) file for more details.
 
 ## Follow & Share  
 Platform	Link  
-Tik-Tok(CN)   
+Tik-Tok(CN)    https://v.douyin.com/e2VfmxN4hlU/ daA:/ S@y.GV 09/28   
 Instagram	https://www.instagram.com/reel/DIsNyOcIzj-/?igsh=a3Bzc2doYTR3N3p2  
 
 
