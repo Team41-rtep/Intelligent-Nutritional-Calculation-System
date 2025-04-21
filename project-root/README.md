@@ -99,8 +99,7 @@ In the terminal, navigate to the program directory where the compiled executable
 cd ~/work/mytflite/tensorflow/bazel-bin/tensorflow/lite/work/  
 
 4. Run the Fruit Classifier
-5. 
-Make sure the camera and sensor are connected, then execute:  
+5. Make sure the camera and sensor are connected, then execute:  
 ./fruit_classifier  
 This will:  
 Start capturing video from the camera  
