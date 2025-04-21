@@ -154,6 +154,9 @@ Platform	Link
 Tik-Tok(CN)    https://v.douyin.com/e2VfmxN4hlU/ daA:/ S@y.GV 09/28   
 Instagram	https://www.instagram.com/reel/DIsNyOcIzj-/?igsh=a3Bzc2doYTR3N3p2  
 Tik-Tok   https://vm.tiktok.com/ZNdYf6r1x/   
+Youtube   https://youtu.be/lVgxKJk3pXk?si=exyX7ZqMQ5KhUnBr   
+Bilibili  https://b23.tv/hq9zRlg   
+
 
 
 ## Team Contribution  
