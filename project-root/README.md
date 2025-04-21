@@ -70,6 +70,12 @@ project-root/
 [🔗 Click here to download v1.0 release](https://github.com/Team41-rtep/Intelligent-Nutritional-Calculation-System/releases/tag/v1.0)
 [🔗 Click here to download v2.0 release](https://github.com/Team41-rtep/Intelligent-Nutritional-Calculation-System/releases/tag/v2.0)
 
+## License
+
+This project is licensed under the MIT License.  
+See the [LICENSE](./LICENSE) file for more details.
+
+
 ## Team Contribution
 Name | GitHub Branch | Main Responsibilities | Description
 
