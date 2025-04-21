@@ -75,6 +75,12 @@ project-root/
 This project is licensed under the MIT License.  
 See the [LICENSE](./LICENSE) file for more details.
 
+## Follow & Share
+Platform	Link
+Tik-Tok(CN) 
+Instagram	https://www.instagram.com/reel/DIsNyOcIzj-/?igsh=a3Bzc2doYTR3N3p2
+
+
 
 ## Team Contribution
 Name | GitHub Branch | Main Responsibilities | Description
