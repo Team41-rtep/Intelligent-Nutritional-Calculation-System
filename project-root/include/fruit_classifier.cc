@@ -172,8 +172,6 @@ float shared_maopi_weight = 0.0f;
 std::atomic<bool> stop_weight_thread(false);
 
 void readWeightThread(WeightSensor& weightSensor) {
-	std::cerr << "startreadWeightThread ====== " << std::endl;
-	//A3 00  A2 A4 A5
     std::vector<uint8_t> command = {0xA3,0x0,0xA2,0xA4,0xA5};
     while (!stop_weight_thread) {
         weightSensor.sendCommand(command);
@@ -182,12 +180,8 @@ void readWeightThread(WeightSensor& weightSensor) {
             std::lock_guard<std::mutex> lock(weight_mutex);
             shared_weight = weight;
             std::cerr << "readWeight: " << weight << "g"<<std::endl;
-        }else
-		{
-			shared_weight = 0;
-			std::cerr << "readWeight < 0: " << weight << "g"<<std::endl;
-		}
-        std::this_thread::sleep_for(std::chrono::milliseconds(500)); // Adjust sleep time as needed
+        }
+        std::this_thread::sleep_for(std::chrono::milliseconds(100)); // Adjust sleep time as needed
     }
 }
 
@@ -204,7 +198,6 @@ cv::Mat preprocess_image(const cv::Mat& image) {
 }
 
 int main() {
-	std::cerr << "start===================20250419" << std::endl;
     // 加载 TFLite 模型
     std::unique_ptr<tflite::FlatBufferModel> model =
         tflite::FlatBufferModel::BuildFromFile("./fruit_model.tflite");
@@ -260,11 +253,11 @@ int main() {
 #endif
 
     std::cerr << "command send ok" << std::endl;
-	int weight_count = 0;
+
 
     // 初始化数据库
     NutritionDatabase database("fruits.csv");
-	float weight = 0.0f;
+
     cv::Mat frame;
     while (true) {
         // 捕获一帧图像
@@ -273,20 +266,31 @@ int main() {
             std::cerr << "Failed to capture frame." << std::endl;
             break;
         }
-		
-
-
-
-		{
-			std::lock_guard<std::mutex> lock(weight_mutex);
-			weight = shared_weight;  //工作方式2
-			std::cerr << "shared_weight:  "<<shared_weight << std::endl;
-		}
-		
-        //重量稳定大概5秒
-        if(weight > 10)
+        // 读取重量
+        float weight = 0.0f;
         {
+            std::lock_guard<std::mutex> lock(weight_mutex);
+            weight = shared_weight;  //工作方式2
+        }
+        if(weight >10 && is_res == false)
+        {
+            calc_count++;
+        }
+        
+        if(weight <=10 && is_res)
+        {
+            is_res = false;
+            calc_count = 0;
+        }
 
+
+        
+        //重量稳定大概5秒
+        if(calc_count > 50)
+        {
+			is_new = true;
+            std::cerr << "readWeight: " << weight << "g"<<std::endl;
+            is_res = true;
             // 预处理图像
             cv::Mat processed_image = preprocess_image(frame);
 
@@ -319,10 +323,18 @@ int main() {
 
             // 计算总营养成分
             TotalNutrition total_nutrition = calculateNutrition(nutrition, weight);
-
+			if(is_new)
+			{
+				is_new = false;
+				std::cout << "add new: "<<weight << std::endl;
+				all.protein += total_nutrition.protein;
+				all.carbohydrates += total_nutrition.carbohydrates;
+				all.fat += total_nutrition.fat;
+				all.calories += total_nutrition.calories;	
+			}
 
             // 显示结果
-            displayResult(frame, predicted_label, weight, total_nutrition);
+            displayResult(frame, predicted_label, weight, all);
         }
         // 显示图像
         cv::imshow("Frame", frame);
