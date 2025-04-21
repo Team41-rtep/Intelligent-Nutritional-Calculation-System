@@ -30,7 +30,50 @@ Dependencies:
 TensorFlow Lite C++ API  
 OpenCV  
 Boost.Asio  
+
 ##  Install Dependencies
+1. Download and Flash Standard Raspberry Pi OS Image  
+Go to the official Raspberry Pi OS download page:  
+👉 https://www.raspberrypi.com/software/operating-systems/    
+
+Download Raspberry Pi OS (64-bit) with Desktop  
+
+Use Win32DiskImager or Raspberry Pi Imager to flash the image:  
+
+Insert your SD card into your computer  
+
+Launch Win32DiskImager  
+  
+Select the .img file and your SD card device  
+
+Click Write to burn the OS image  
+
+2. First Boot and Basic Configuration  
+Insert the SD card into the Raspberry Pi and boot  
+
+Connect to Wi-Fi, enable SSH (optional), and expand filesystem if prompted  
+
+Run:  
+
+sudo apt update && sudo apt upgrade -y
+
+3. Install TensorFlow Lite Runtime
+Install dependencies:
+sudo apt install -y python3-pip libatlas-base-dev
+
+Install TFLite runtime (C++ development libraries):  
+Download the precompiled .deb for arm64 from TensorFlow GitHub  
+Or build from source (optional, slower)  
+
+4. Clone the Project
+git clone https://github.com/Team41-rtep/Intelligent-Nutritional-Calculation-System.git  
+cd Intelligent-Nutritional-Calculation-System  
+
+5. Build the Project (CMake)
+mkdir build  
+cd build  
+cmake ..  
+make  
 
 ## Usage
 
