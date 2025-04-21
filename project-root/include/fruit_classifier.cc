@@ -128,6 +128,8 @@ TotalNutrition calculateNutrition(const Nutrition& nutrition, float weight) {
     };
 }
 
+TotalNutrition all;
+
 // UI 显示模块
 void displayResult(cv::Mat& frame, const std::string& fruit, float weight, const TotalNutrition& nutrition) {
     // Title
@@ -170,19 +172,29 @@ float shared_maopi_weight = 0.0f;
 std::atomic<bool> stop_weight_thread(false);
 
 void readWeightThread(WeightSensor& weightSensor) {
+	std::cerr << "startreadWeightThread ====== " << std::endl;
+	//A3 00  A2 A4 A5
+    std::vector<uint8_t> command = {0xA3,0x0,0xA2,0xA4,0xA5};
     while (!stop_weight_thread) {
+        weightSensor.sendCommand(command);
         float weight = weightSensor.readWeight();
         if (weight > 0) {
             std::lock_guard<std::mutex> lock(weight_mutex);
             shared_weight = weight;
-            //std::cerr << "readWeight: " << weight << "g"<<std::endl;
-        }
-        std::this_thread::sleep_for(std::chrono::milliseconds(100)); // Adjust sleep time as needed
+            std::cerr << "readWeight: " << weight << "g"<<std::endl;
+        }else
+		{
+			shared_weight = 0;
+			std::cerr << "readWeight < 0: " << weight << "g"<<std::endl;
+		}
+        std::this_thread::sleep_for(std::chrono::milliseconds(500)); // Adjust sleep time as needed
     }
 }
 
 int calc_count = 0;
 bool is_res = false;
+
+bool is_new = false;
 
 cv::Mat preprocess_image(const cv::Mat& image) {
     cv::Mat resized_image;
@@ -192,6 +204,7 @@ cv::Mat preprocess_image(const cv::Mat& image) {
 }
 
 int main() {
+	std::cerr << "start===================20250419" << std::endl;
     // 加载 TFLite 模型
     std::unique_ptr<tflite::FlatBufferModel> model =
         tflite::FlatBufferModel::BuildFromFile("./fruit_model.tflite");
@@ -221,7 +234,9 @@ int main() {
 
 
     // 打开摄像头
-    cv::VideoCapture cap("/dev/video0");
+    //cv::VideoCapture cap("/dev/video0");
+	cv::VideoCapture cap(0);
+    // cv::VideoCapture cap("libcamerasrc ! video/x-raw,width=640,height=480 ! videoconvert ! appsink", cv::CAP_GSTREAMER);
     if (!cap.isOpened()) {
         std::cerr << "Failed to open camera." << std::endl;
         return -1;
@@ -233,7 +248,7 @@ int main() {
     // Start the weight reading thread
     std::thread weight_thread(readWeightThread, std::ref(weightSensor));
     // 发送一个16进制命令
-#if 1   //工作方式2
+#if 0   //工作方式2
     std::vector<uint8_t> command = {0xA5};
     weightSensor.sendCommand(command);
     std::vector<uint8_t> command2 = {0xAA};
@@ -245,11 +260,11 @@ int main() {
 #endif
 
     std::cerr << "command send ok" << std::endl;
-
+	int weight_count = 0;
 
     // 初始化数据库
     NutritionDatabase database("fruits.csv");
-
+	float weight = 0.0f;
     cv::Mat frame;
     while (true) {
         // 捕获一帧图像
@@ -258,30 +273,20 @@ int main() {
             std::cerr << "Failed to capture frame." << std::endl;
             break;
         }
-        // 读取重量
-        float weight = 0.0f;
-        {
-            std::lock_guard<std::mutex> lock(weight_mutex);
-            weight = shared_weight;  //工作方式2
-        }
-        if(weight >1 && is_res == false)
-        {
-            calc_count++;
-        }
-        
-        if(weight <=1 && is_res)
-        {
-            is_res = false;
-            calc_count = 0;
-        }
+		
 
 
-        
+
+		{
+			std::lock_guard<std::mutex> lock(weight_mutex);
+			weight = shared_weight;  //工作方式2
+			std::cerr << "shared_weight:  "<<shared_weight << std::endl;
+		}
+		
         //重量稳定大概5秒
-        // if(calc_count > 50)
+        if(weight > 10)
         {
-            std::cerr << "readWeight: " << weight << "g"<<std::endl;
-            is_res = true;
+
             // 预处理图像
             cv::Mat processed_image = preprocess_image(frame);
 
@@ -314,6 +319,7 @@ int main() {
 
             // 计算总营养成分
             TotalNutrition total_nutrition = calculateNutrition(nutrition, weight);
+
 
             // 显示结果
             displayResult(frame, predicted_label, weight, total_nutrition);
