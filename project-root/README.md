@@ -144,7 +144,6 @@ project-root/
 [🔗 Click here to download v2.0 release](https://github.com/Team41-rtep/Intelligent-Nutritional-Calculation-System/releases/tag/v2.0)  
 [🔗 Click here to download v3.0 release](https://github.com/Team41-rtep/Intelligent-Nutritional-Calculation-System/releases/tag/v3.0)  
 
-## License
 
 ## License
 
