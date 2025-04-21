@@ -76,8 +76,38 @@ cmake ..
 make  
 
 ## Usage
+ 1. Hardware Setup  
+Before running the program, make sure all required hardware is properly connected:  
 
-## Run the app
+
+Component	Port/Connection Type  
+📺 HDMI Monitor	Connect to Raspberry Pi HDMI port  
+🎥 USB Camera	Plug into a USB port on the Pi  
+⚖️ Load Sensor	Connect via serial port (e.g., /dev/ttyAMA0) using USB-TTL or GPIO  
+🔌 Power Supply	Standard Raspberry Pi power adapter  
+
+🖥️ 2. Boot and Access the Terminal  
+Power on the Raspberry Pi.  
+
+Wait for the desktop interface or terminal to appear.  
+
+Open a terminal window (or connect via SSH if running headless).   
+
+3. Navigate to Program Directory  
+In the terminal, navigate to the program directory where the compiled executable is stored:  
+
+cd ~/work/mytflite/tensorflow/bazel-bin/tensorflow/lite/work/  
+
+4. Run the Fruit Classifier  
+Make sure the camera and sensor are connected, then execute:  
+./fruit_classifier  
+This will:  
+Start capturing video from the camera
+Classify the fruit in real time using a TensorFlow Lite model
+Read the weight from the load sensor
+Display nutritional values (protein, carbs, fat, calories) overlaid on the video feed using OpenCV
+
+
 
 ## Repository Structure
 
