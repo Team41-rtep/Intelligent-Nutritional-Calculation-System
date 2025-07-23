@@ -148,21 +148,3 @@ project-root/
 
 This project is licensed under the MIT License.    
 See the [LICENSE](./LICENSE) file for more details.    
-
-## Follow & Share  
-Platform	Link  
-Tik-Tok(CN)    https://v.douyin.com/e2VfmxN4hlU/ daA:/ S@y.GV 09/28   
-Instagram	https://www.instagram.com/reel/DIsNyOcIzj-/?igsh=a3Bzc2doYTR3N3p2  
-Tik-Tok   https://vm.tiktok.com/ZNdYf6r1x/   
-Youtube   https://youtu.be/lVgxKJk3pXk?si=exyX7ZqMQ5KhUnBr   
-Bilibili  https://b23.tv/hq9zRlg   
-
-
-
-## Team Contribution  
-Name | GitHub Branch | Main Responsibilities | Description  
-
-Ge Zhou | GeZhou-hardware | Hardware communication & weight sensor | Developed the WeightSensor class, implemented serial communication, data reading, command sending, and weight acquisition thread   
-Zhenyu Xu | ZhenyuXu-ai | AI model integration & fruit classification | Integrated TensorFlow Lite model, handled image preprocessing, inference execution, and label decoding   
-Junze Mao | JunzeMao-nutrition | Nutrition database & calculation module | Built the NutritionDatabase class from CSV file, implemented nutritional value calculation based on predicted fruit and weight   
-Ziyan Zeng | ZiyanZeng-ui-doc | UI display, documentation, and promotion | Designed OpenCV real-time UI output, managed testing and documentation, updated GitHub README, created demo video and handled social media promotion  
